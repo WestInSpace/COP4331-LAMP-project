@@ -1,0 +1,124 @@
+/* Global */
+
+:root {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-card: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --border: #334155;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Links */
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* Navbar */
+
+.navbar {
+  border-bottom: 1px solid var(--border);
+}
+
+/* Cards */
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+/* Forms */
+
+.form-control,
+.form-select {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.form-control:focus,
+.form-select:focus {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.2);
+}
+
+.form-control::placeholder {
+  color: var(--text-secondary);
+}
+
+/* Buttons */
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+/* Tables */
+
+.table {
+  color: var(--text-primary);
+}
+
+.table thead {
+  border-bottom: 1px solid var(--border);
+}
+
+.table tbody tr {
+  border-color: var(--border);
+}
+
+/* Utility Classes */
+
+.text-secondary-custom {
+  color: var(--text-secondary);
+}
+
+.bg-card {
+  background: var(--bg-card);
+}
+
+.border-custom {
+  border-color: var(--border) !important;
+}
+
+/* Status */
+
+.status-active {
+  color: var(--success);
+}
+
+.status-disabled {
+  color: var(--danger);
+}
