@@ -39,3 +39,19 @@ The frontend is built using standard HTML5, CSS3, and vanilla JavaScript. It cur
 ### 4. Authentication & Session Management
 * Implement page-load session checks to redirect unauthenticated requests to the login view.
 * Attach logout handlers to flush stored auth tokens/cookies and handle post-logout navigation.
+
+## How to Run Locally
+
+1. Open the project folder in VS Code.
+2. Right-click `index.html` (or any other HTML page).
+3. Select **Open in Integrated Browser**.
+
+---
+
+### Alternative Method
+
+1. Open the HTML file in the editor.
+2. Press `Ctrl` + `Shift` + `P`.
+3. Select **Open in Integrated Browser**.
+
+> **Note:** The generated link can be copied and pasted into any web browser of your choice.
