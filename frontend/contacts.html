@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacts Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Main Container Card -->
+  <main class="dashboard-card">
+    
+    <!-- Top Header -->
+    <header class="dashboard-header">
+      <div class="brand-section">
+        <h1>Contacts</h1>
+        <span id="role-badge" class="badge badge-admin">ADMIN</span>
+      </div>
+
+      <div class="user-section">
+        <span id="user-display-name">Alex Morgan</span>
+      </div>
+    </header>
+
+    <!-- Toolbar: Search Bar & New Contact Trigger -->
+    <section class="toolbar">
+      <div class="search-group">
+        <input type="text" id="contact-search" placeholder="Search contacts..." autocomplete="off">
+      </div>
+      <button id="add-contact-btn" class="btn-primary-pill">+ Add Contact</button>
+    </section>
+
+    <!-- Admin Filter Dropdown Bar -->
+    <section id="admin-banner" class="admin-panel">
+<div class="custom-select-wrapper" id="admin-user-filter">
+  <label for="admin-user-filter">Filter View:</label>
+  <div class="custom-select" tabIndex="0">
+    <div class="select-trigger">
+      <span class="selected-text">All Users' Contacts</span>
+      <span class="arrow"></span>
+    </div>
+    <div class="custom-options">
+      <div class="custom-option selected" data-value="all">All Users' Contacts</div>
+      <div class="custom-option" data-value="1">Alex Morgan</div>
+      <div class="custom-option" data-value="2">Sarah Connor</div>
+    </div>
+  </div>
+</div>
+      <button id="manage-users-btn" class="btn-secondary-pill">Manage Users</button>
+    </section>
+
+    <!-- Grid Container with Static Mock Cards -->
+    <section id="contacts-grid" class="contacts-grid">
+      
+      <!-- Card 1 -->
+      <div class="contact-card">
+        <div class="card-top">
+          <h3>John Doe</h3>
+          <span class="card-id">ID: #101</span>
+        </div>
+        <div class="owner-tag">Owner: <strong>Alex Morgan</strong></div>
+        <div class="card-field">
+          <label>Email</label>
+          <input type="email" value="john.doe@example.com" disabled>
+        </div>
+        <div class="card-field">
+          <label>Phone</label>
+          <input type="text" value="(555) 019-2831" disabled>
+        </div>
+        <div class="card-actions">
+          <button class="btn-card-action btn-edit">Edit</button>
+          <button class="btn-card-action btn-danger">Delete</button>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="contact-card">
+        <div class="card-top">
+          <h3>Jane Smith</h3>
+          <span class="card-id">ID: #102</span>
+        </div>
+        <div class="owner-tag">Owner: <strong>Sarah Connor</strong></div>
+        <div class="card-field">
+          <label>Email</label>
+          <input type="email" value="jane.smith@example.com" disabled>
+        </div>
+        <div class="card-field">
+          <label>Phone</label>
+          <input type="text" value="(555) 014-3920" disabled>
+        </div>
+        <div class="card-actions">
+          <button class="btn-card-action btn-edit">Edit</button>
+          <button class="btn-card-action btn-danger">Delete</button>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="contact-card">
+        <div class="card-top">
+          <h3>Robert Johnson</h3>
+          <span class="card-id">ID: #103</span>
+        </div>
+        <div class="owner-tag">Owner: <strong>Alex Morgan</strong></div>
+        <div class="card-field">
+          <label>Email</label>
+          <input type="email" value="robert.j@example.com" disabled>
+        </div>
+        <div class="card-field">
+          <label>Phone</label>
+          <input type="text" value="(555) 018-8472" disabled>
+        </div>
+        <div class="card-actions">
+          <button class="btn-card-action btn-edit">Edit</button>
+          <button class="btn-card-action btn-danger">Delete</button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Anchored Footer -->
+  <footer class="dashboard-footer">
+    <button id="logout-btn" class="btn-logout">Log Out</button>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/contacts.js"></script>
+</body>
+</html>

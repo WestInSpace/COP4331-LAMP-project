@@ -8,18 +8,32 @@
 body {
   background-color: #334058;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   min-height: 100vh;
 }
 
-.card {
+/* ==========================================================================
+   CARDS (AUTH & DASHBOARD)
+   ========================================================================== */
+
+.card,
+.dashboard-card {
   background: #bcc8df;
   padding: 2.5rem 2rem;
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   width: 100%;
+}
+
+.card {
   max-width: 420px;
+  margin: auto;
+}
+
+.dashboard-card {
+  max-width: 900px;
+  margin: 2rem auto;
+  flex: 1;
 }
 
 .card h1 {
@@ -28,6 +42,10 @@ body {
   font-size: 1.75rem;
   color: #111827;
 }
+
+/* ==========================================================================
+   FORM CONTROLS & INPUTS
+   ========================================================================== */
 
 .form-row {
   display: flex;
@@ -47,18 +65,201 @@ body {
   margin-bottom: 0.35rem;
 }
 
-.form-group input {
+.form-group input,
+.search-group input,
+.card-field input {
   width: 100%;
   padding: 0.65rem 0.85rem;
   border: 1px solid #d1d5db;
   border-radius: 20px;
   outline: none;
   font-size: 0.9rem;
+  background-color: #ffffff;
+  color: #111827;
+  display: block;
 }
 
-.form-group input:focus {
+.form-group input:focus,
+.search-group input:focus,
+.card-field input:focus {
   border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
+
+.card-field input {
+  padding: 0.45rem 0.75rem;
+  border-radius: 14px;
+  font-size: 0.85rem;
+  border-color: #e2e8f0;
+}
+
+.card-field input:disabled {
+  background-color: #f8fafc;
+  color: #64748b;
+}
+
+/* ==========================================================================
+   DASHBOARD HEADER & CONTROL BAR
+   ========================================================================== */
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #94a3b8;
+}
+
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-section h1 {
+  font-size: 1.75rem;
+  color: #111827;
+}
+
+.user-section {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.badge {
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.badge-admin { background: #fee2e2; color: #dc2626; }
+.badge-user { background: #e0e7ff; color: #2563eb; }
+
+.toolbar {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.search-group {
+  flex: 1;
+}
+
+.btn-primary-pill {
+  padding: 0.65rem 1.25rem;
+  width: auto;
+  margin-top: 0;
+}
+
+.admin-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 1px solid #94a3b8;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.select-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.select-wrapper label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.styled-select {
+  padding: 0.5rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 20px;
+  background: #ffffff;
+  outline: none;
+  font-size: 0.85rem;
+}
+
+.btn-secondary-pill {
+  width: auto;
+  margin-top: 0;
+  padding: 0.5rem 1rem;
+  background: #ffffff;
+  color: #1f2937;
+  border: 1px solid #d1d5db;
+}
+
+.btn-secondary-pill:hover {
+  background: #f3f4f6;
+}
+
+/* ==========================================================================
+   DYNAMIC AUTO-GRID & WHITE CONTACT CARDS
+   ========================================================================== */
+
+.contacts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.contact-card {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.25rem;
+}
+
+.card-top h3 {
+  font-size: 1.1rem;
+  color: #111827;
+}
+
+.card-id {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.owner-tag {
+  font-size: 0.8rem;
+  color: #4b5563;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.card-field {
+  margin-bottom: 0.75rem;
+}
+
+.card-field label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: 0.25rem;
+}
+
+/* ==========================================================================
+   BUTTONS & LINKS
+   ========================================================================== */
 
 button {
   width: 100%;
@@ -77,6 +278,64 @@ button:hover {
   background: #000000;
 }
 
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.btn-card-action {
+  width: auto;
+  margin-top: 0;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 12px;
+  line-height: 1.2;
+}
+
+.btn-edit {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+.btn-edit:hover {
+  background: #2563eb;
+}
+
+.btn-danger {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.btn-danger:hover {
+  background: #dc2626;
+}
+
+.btn-logout {
+  width: auto;
+  margin-top: 0;
+  background: #fef2f2;
+  color: #ef4444;
+  border: 1px solid #fca5a5;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-logout:hover {
+  background: #ef4444;
+  color: #ffffff;
+  border-color: #ef4444;
+}
+
 .auth-link {
   margin-top: 1.25rem;
   text-align: center;
@@ -91,4 +350,113 @@ button:hover {
 
 .auth-link a:hover {
   text-decoration: underline;
+}
+
+/* ==========================================================================
+   ANCHORED FOOTER
+   ========================================================================== */
+
+.dashboard-footer {
+  width: 100%;
+  background-color: #bcc8df;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: sticky;
+  bottom: 0;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* ==========================================================================
+   CUSTOM ROUNDED DROPDOWN
+   ========================================================================== */
+
+.custom-select-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.custom-select-wrapper label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.custom-select {
+  position: relative;
+  user-select: none;
+  min-width: 180px;
+}
+
+.select-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background: #ffffff;
+  border: 1px solid #3b82f6;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #111827;
+  cursor: pointer;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  transition: all 0.15s ease;
+}
+
+.select-trigger .arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #4b5563;
+  margin-left: 0.75rem;
+  transition: transform 0.15s ease;
+}
+
+.custom-select.open .select-trigger .arrow {
+  transform: rotate(180deg);
+}
+
+.custom-options {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+  display: none;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.custom-select.open .custom-options {
+  display: block;
+}
+
+.custom-option {
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  color: #1f2937;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.custom-option:hover {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+.custom-option.selected {
+  background: #eff6ff;
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.custom-option.selected:hover {
+  background: #3b82f6;
+  color: #ffffff;
 }
