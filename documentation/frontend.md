@@ -6,6 +6,12 @@ The frontend is built using standard HTML5, CSS3, and vanilla JavaScript. It cur
 
 ### Implemented Features
 
+#### Pages :  
+    1. login
+    2. register
+    3. contacts (must be opened manually in an html view and can't navigate to from index.html)
+
+
 * **Dashboard Layout:** A centered card-based container (`dashboard-card`) with a sticky footer and control headers.
 * **Inline Field Copying:** Contact fields include adjacent buttons that write values to `navigator.clipboard`. The button toggles between copy and checkmark SVG icons for 1 second upon success.
 * **Custom Dropdown Component:** A custom `<div>`-based dropdown replacing native `<select>` elements to allow consistent styling and rounded corners across browsers.
