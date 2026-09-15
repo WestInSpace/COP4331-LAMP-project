@@ -1,6 +1,6 @@
 # Database Documentation
 
-The project uses a MySQL database called `ContactsAppDB`. It has two tables: `Users` and `Contacts`.
+The project uses a MySQL database called `ColorsAppDB`. It currently has two tables: `Users` and `Colors`.
 
 ## Users
 
@@ -12,26 +12,19 @@ Stores the information for each user.
 | FirstName | VARCHAR(50) |
 | LastName | VARCHAR(50) |
 | Login | VARCHAR(50) |
-| Password | VARCHAR(255) |
-| Role | ENUM (Admin or User) |
-| IsDisabled | BOOLEAN |
+| Password | VARCHAR(50) |
 
-`Login` must be unique. Passwords are stored as hashes by the application.
+## Colors
 
-## Contacts
-
-Stores the contacts added by each user.
+Stores the colors added by each user.
 
 | Column | Type |
 |---|---|
 | ID | INT (Primary Key, Auto Increment) |
-| FirstName | VARCHAR(50) |
-| LastName | VARCHAR(50) |
-| Phone | VARCHAR(25) |
-| Email | VARCHAR(100) |
+| Name | VARCHAR(50) |
 | UserID | INT |
 
-`UserID` connects each contact to the user who owns it.
+`UserID` is used to associate a color with a user.
 
 ## SQL Files
 

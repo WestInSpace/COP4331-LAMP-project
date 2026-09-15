@@ -1,49 +1,44 @@
--- COP4331 Contacts Manager Database
+-- ============================================================
+-- SQL Schema Script: create_tables.sql
+-- Project: COP4331 LAMP Stack Demo (Colors Manager)
+-- Description: Creates the ColorsAppDB database, Users table,
+--              Colors table, and grants user permissions.
+-- ============================================================
 
-CREATE DATABASE IF NOT EXISTS `ContactsAppDB`
+-- 1. Create and select the database
+CREATE DATABASE IF NOT EXISTS `ColorsAppDB`
     DEFAULT CHARACTER SET utf8mb4
     DEFAULT COLLATE utf8mb4_unicode_ci;
 
-USE `ContactsAppDB`;
+USE `ColorsAppDB`;
 
--- Users
+-- 2. Create Users Table
 CREATE TABLE IF NOT EXISTS `Users` (
     `ID` INT NOT NULL AUTO_INCREMENT,
-    `FirstName` VARCHAR(50) NOT NULL,
-    `LastName` VARCHAR(50) NOT NULL,
-    `Login` VARCHAR(50) NOT NULL,
-    `Password` VARCHAR(255) NOT NULL,
-    `Role` ENUM('Admin', 'User') NOT NULL DEFAULT 'User',
-    `IsDisabled` BOOLEAN NOT NULL DEFAULT FALSE,
+    `FirstName` VARCHAR(50) NOT NULL DEFAULT '',
+    `LastName` VARCHAR(50) NOT NULL DEFAULT '',
+    `Login` VARCHAR(50) NOT NULL DEFAULT '',
+    `Password` VARCHAR(50) NOT NULL DEFAULT '',
     PRIMARY KEY (`ID`),
-    UNIQUE KEY `idx_users_login` (`Login`)
+    INDEX `idx_users_login` (`Login`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Contacts
-CREATE TABLE IF NOT EXISTS `Contacts` (
+-- 3. Create Colors Table
+CREATE TABLE IF NOT EXISTS `Colors` (
     `ID` INT NOT NULL AUTO_INCREMENT,
-    `FirstName` VARCHAR(50) NOT NULL,
-    `LastName` VARCHAR(50) NOT NULL,
-    `Phone` VARCHAR(25),
-    `Email` VARCHAR(100),
-    `UserID` INT NOT NULL,
+    `Name` VARCHAR(50) NOT NULL DEFAULT '',
+    `UserID` INT NOT NULL DEFAULT 0,
     PRIMARY KEY (`ID`),
-    INDEX `idx_contacts_userid` (`UserID`),
-    INDEX `idx_contacts_name` (`LastName`, `FirstName`),
-    CONSTRAINT `fk_contacts_user`
-        FOREIGN KEY (`UserID`) REFERENCES `Users` (`ID`)
-        ON DELETE CASCADE
+    INDEX `idx_colors_userid` (`UserID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Application database user
-CREATE USER IF NOT EXISTS 'ContactsAppUser'@'localhost'
-    IDENTIFIED BY 'CHANGE_ME';
+-- 4. Create Application Database User & Grant Permissions
+-- Note: Replace password if desired for custom deployments.
+CREATE USER IF NOT EXISTS 'ColorsAppUser'@'localhost' IDENTIFIED BY 'CHANGE_ME';
+GRANT ALL PRIVILEGES ON `ColorsAppDB`.* TO 'ColorsAppUser'@'localhost';
 
-GRANT ALL PRIVILEGES ON `ContactsAppDB`.* TO 'ContactsAppUser'@'localhost';
-
-CREATE USER IF NOT EXISTS 'ContactsAppUser'@'%'
-    IDENTIFIED BY 'CHANGE_ME';
-
-GRANT ALL PRIVILEGES ON `ContactsAppDB`.* TO 'ContactsAppUser'@'%';
+-- Also allow connection from any host (useful for Docker containerization)
+CREATE USER IF NOT EXISTS 'ColorsAppUser'@'%' IDENTIFIED BY 'CHANGE_ME';
+GRANT ALL PRIVILEGES ON `ColorsAppDB`.* TO 'ColorsAppUser'@'%';
 
 FLUSH PRIVILEGES;
