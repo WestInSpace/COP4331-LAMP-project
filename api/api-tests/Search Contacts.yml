@@ -5,13 +5,13 @@ info:
 
 http:
   method: GET
-  url: "{{urlBase}}/api/index.php?q=West"
+  url: "{{urlBase}}/api/index.php?q=J"
   headers:
     - name: Authorization
       value: Bearer 2
   params:
     - name: q
-      value: West
+      value: J
       type: query
   body:
     type: json

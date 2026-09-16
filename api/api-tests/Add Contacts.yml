@@ -13,8 +13,8 @@ http:
     type: json
     data: |-
       {
-        "firstName": "West",
-        "lastName": "Math"
+        "firstName": "Jim",
+        "lastName": "mi"
       }
   auth: inherit
 
