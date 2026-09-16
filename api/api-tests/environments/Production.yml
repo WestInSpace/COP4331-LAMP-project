@@ -1,0 +1,5 @@
+name: Production
+variables:
+  - name: urlBase
+    value: https://lamp.pradvel.xyz
+    description: Lamp Demo
