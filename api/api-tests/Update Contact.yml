@@ -1,0 +1,32 @@
+info:
+  name: Update Contact
+  type: http
+  seq: 7
+
+http:
+  method: PUT
+  url: "{{urlBase}}/api/index.php?id=4"
+  headers:
+    - name: Authorization
+      value: Bearer 2
+  params:
+    - name: id
+      value: "4"
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "firstName": "West",
+        "lastName": "Math",
+        "phone": "555-555-5555",
+        "email": "fakeEmail@email.com"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

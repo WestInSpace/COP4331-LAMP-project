@@ -1,0 +1,5 @@
+name: Development
+variables:
+  - name: urlBase
+    value: https://lamp.pradvel.xyz
+    description: ""
