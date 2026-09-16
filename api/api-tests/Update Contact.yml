@@ -5,20 +5,20 @@ info:
 
 http:
   method: PUT
-  url: "{{urlBase}}/api/index.php?id=4"
+  url: "{{urlBase}}/api/index.php?id=5"
   headers:
     - name: Authorization
       value: Bearer 2
   params:
     - name: id
-      value: "4"
+      value: "5"
       type: query
   body:
     type: json
     data: |-
       {
-        "firstName": "West",
-        "lastName": "Math",
+        "firstName": "Jim",
+        "lastName": "Mi",
         "phone": "555-555-5555",
         "email": "fakeEmail@email.com"
       }

@@ -1,7 +1,7 @@
 opencollection: 1.0.0
 
 info:
-  name: LAMP Demo
+  name: LAMP Project
 config:
   proxy:
     inherit: true
