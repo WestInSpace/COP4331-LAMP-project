@@ -4,6 +4,7 @@
 //
 //  GET    /api/index.php?ping=1   — status ping health check
 //  POST   /api/index.php (login)  — authenticate user
+//  POST   /api/index.php?action=register — create a new user
 //  GET    /api/index.php          — list all contacts for user
 //  GET    /api/index.php?q=term   — partial search contacts
 //  GET    /api/index.php?id=1     — get single contact by ID
