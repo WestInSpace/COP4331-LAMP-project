@@ -48,6 +48,42 @@ Status: 401
 }  
 
 ---
+Create User
+
+Endpoint: POST {{urlbase}}/api/index.php?action=register
+
+Purpose: Register a new user by providing their first name, last name, username, and password
+
+**Sample Body**  
+
+{  
+  "firstName": "John",  
+  "lastName": "Smith",  
+  "login": "johnsmith",  
+  "password": "test123"  
+}  
+
+**Sample response on success:**  
+Status 201 Created  
+{  
+  "message": "User created successfully",  
+  "id": 3,  
+  "error": ""  
+}  
+
+**Sample response on duplicate username:**  
+Status 409 Conflict  
+{  
+  "error": "Username already exists"  
+}  
+
+**Sample response on missing required fields:**  
+Status 400 Bad Request  
+{  
+  "error": "All fields are required"  
+}  
+
+---
 Search Contacts
 
 Endpoint: GET {{urlBase}}/api/index.php?q=Name

@@ -4,6 +4,7 @@
 //
 //  GET    /api/index.php?ping=1   — status ping health check
 //  POST   /api/index.php (login)  — authenticate user
+//  POST   /api/index.php?action=register — create a new user
 //  GET    /api/index.php          — list all contacts for user
 //  GET    /api/index.php?q=term   — partial search contacts
 //  GET    /api/index.php?id=1     — get single contact by ID
@@ -26,7 +27,7 @@ if ($method === 'GET' && (isset($_GET['ping']) || (isset($_GET['action']) && $_G
 }
 
 // 2. Unauthenticated Login (POST with login & password in body)
-if ($method === 'POST') {
+if ($method === 'POST' && ($_GET['action'] ?? '') !== 'register') {
     $body = getRequestBody();
 
     if (isset($body['login']) && isset($body['password'])) {
@@ -68,7 +69,52 @@ if ($method === 'POST') {
     }
 }
 
-// 3. All other routes require an authenticated user
+// 3. Create a new user 
+if ($method === "POST" && ($_GET['action'] ?? '') === 'register') {
+    $body = getRequestBody(); 
+
+    $firstName  = clean($body['firstName'] ?? ''); 
+    $lastName   = clean($body['lastName'] ?? ''); 
+    $login      = clean($body['login'] ?? ''); 
+    $password   = clean($body['password'] ?? ''); 
+
+    // Checking if all required fields were given 
+    if ($firstName === '' || $lastName === '' || $login === '' || !is_string($password) || $password === '') {
+        respond(400, ['error' => 'All fields are required']); 
+    }
+
+    // test line: respond(200, ['message' => 'Registration fields recieved successfully']); 
+
+    // Inserting the new user into the database 
+    try {
+        $stmt = $db -> prepare(
+            'INSERT INTO Users (FirstName, LastName, Login, Password)
+            VALUES (:firstName, :lastName, :login, :password)'
+        ); 
+
+        $stmt -> execute([
+            ':firstName'    => $firstName, 
+            ':lastName'     => $lastName, 
+            ':login'        => $login, 
+            ':password'     => $password    
+        ]); 
+
+        respond(201, [
+            'message'   => 'User created successfully', 
+            'id'        => (int) $db -> lastInsertId(), 
+            'error'     => ''
+        ]);
+    } catch (PDOException $e) {
+        if ($e -> getCode() === '23000') {
+            respond(409, ['error' => 'Username already exists']); 
+        }
+
+        error_log($e -> getMessage());
+        respond(500, ['error' => 'Unable to create user']);
+    }
+}
+
+// 4. All other routes require an authenticated user
 $userId = requireAuth();
 
 switch ($method) {
